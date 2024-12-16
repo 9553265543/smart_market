@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="images/fevicon/fevicon.png" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="stylesheet" href="css/styles.css">
+
+  <title>Smart Factory</title>
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div class="form-container sign-up-container">
+      <form id="signUpForm">
+        <h1>Create Account</h1>
+        <span>Use Your Email for Registration</span>
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="password" placeholder="Password" required />
+        <input type="password" placeholder="Confirm Password" required />
+        <input type="text" placeholder="Phone Number" required />
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+    <div class="form-container sign-in-container">
+      <form id="loginForm">
+        <h1>Sign in</h1>
+        <span>Use Your Account Details</span>
+        <input type="email" placeholder="Email Address" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Welcome Back!</h1>
+          <p>Register Here..</p>
+          <button class="ghost" id="signIn">Sign In</button>
+          
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>Hello, User!</h1>
+          <p>Enter your personal details and shop now</p>
+          <button class="ghost" id="signUp">Sign Up</button>
+          <br>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      &copy; <span id="displayYear"></span> 
+    </p>
+  </footer>
+
+  <script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+    const loginForm = document.getElementById('loginForm');
+    const signUpForm = document.getElementById('signUpForm');
+
+    // Toggle Sign-Up/Sign-In panel
+    signUpButton.addEventListener('click', () => {
+      container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+      container.classList.remove("right-panel-active");
+    });
+
+    // Redirect on login form submission
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent default form submission behavior
+      window.location.href = "virtual-showroom.html"; // Redirect to the showroom page
+    });
+
+    // Redirect or handle sign-up form submission
+    signUpForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent default form submission behavior
+      alert("Sign-Up Successful! Go to sing-in");
+      window.location.href = "index.html"; // Redirect to the home page or any desired page
+    });
+  </script>
+
+</body>
+
+</html>

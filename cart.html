@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="images/fevicon/fevicon.png" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Smart Factory</title>
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+  <style>
+    /* I wanted to go with a mobile first approach, but it actually lead to more verbose CSS in this case, so I've gone web first. Can't always force things... Side note: I know that this style of nesting in SASS doesn't result in the most performance efficient CSS code... but on the OCD/organizational side, I like it. So for CodePen purposes, CSS selector performance be damned. */
+/* Global settings */
+/* Global "table" column settings */
+ .product-image {
+	 float: left;
+	 width: 20%;
+}
+ .product-details {
+	 float: left;
+	 width: 37%;
+}
+ .product-price {
+	 float: left;
+	 width: 12%;
+}
+ .product-quantity {
+	 float: left;
+	 width: 10%;
+}
+ .product-removal {
+	 float: left;
+	 width: 9%;
+}
+ .product-line-price {
+	 float: left;
+	 width: 12%;
+	 text-align: right;
+}
+/* This is used as the traditional .clearfix class */
+ .group:before, .shopping-cart:before, .column-labels:before, .product:before, .totals-item:before, .group:after, .shopping-cart:after, .column-labels:after, .product:after, .totals-item:after {
+	 content: "";
+	 display: table;
+}
+ .group:after, .shopping-cart:after, .column-labels:after, .product:after, .totals-item:after {
+	 clear: both;
+}
+ .group, .shopping-cart, .column-labels, .product, .totals-item {
+	 zoom: 1;
+}
+/* Apply clearfix in a few places */
+/* Apply dollar signs */
+ .product .product-price:before, .product .product-line-price:before, .totals-value:before {
+	 content: "£";
+}
+/* Body/Header stuff */
+
+ .shopping-cart {
+	 margin-top: -45px;
+}
+/* Column headers */
+ .column-labels label {
+	 padding-bottom: 15px;
+	 margin-bottom: 15px;
+	 border-bottom: 1px solid #eee;
+}
+ .column-labels .product-image, .column-labels .product-details, .column-labels .product-removal {
+	 text-indent: -9999px;
+}
+/* Product entries */
+ .product {
+	 margin-bottom: 20px;
+	 padding-bottom: 10px;
+	 border-bottom: 1px solid #eee;
+}
+ .product .product-image {
+	 text-align: center;
+}
+ .product .product-image img {
+	 width: 100px;
+}
+ .product .product-details .product-title {
+	 margin-right: 20px;
+	 font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+}
+ .product .product-details .product-description {
+	 margin: 5px 20px 5px 0;
+	 line-height: 1.4em;
+}
+ .product .product-quantity input {
+	 width: 40px;
+}
+ .product .remove-product {
+	 border: 0;
+	 padding: 4px 8px;
+	 background-color: #c66;
+	 color: #fff;
+	 font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+	 font-size: 12px;
+	 border-radius: 3px;
+}
+ .product .remove-product:hover {
+	 background-color: #a44;
+}
+/* Totals section */
+ .totals .totals-item {
+	 float: right;
+	 clear: both;
+	 width: 100%;
+	 margin-bottom: 10px;
+}
+ .totals .totals-item label {
+	 float: left;
+	 clear: both;
+	 width: 79%;
+	 text-align: right;
+}
+ .totals .totals-item .totals-value {
+	 float: right;
+	 width: 21%;
+	 text-align: right;
+}
+ .totals .totals-item-total {
+	 font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+}
+ .checkout {
+	 float: right;
+	 border: 0;
+	 margin-top: 20px;
+	 padding: 6px 25px;
+	 background-color: #6b6;
+	 color: #fff;
+	 font-size: 25px;
+	 border-radius: 3px;
+}
+ .checkout:hover {
+	 background-color: #494;
+}
+/* Make adjustments for tablet */
+ @media screen and (max-width: 650px) {
+	 .shopping-cart {
+		 margin: 0;
+		 padding-top: 20px;
+		 border-top: 1px solid #eee;
+	}
+	 .column-labels {
+		 display: none;
+	}
+	 .product-image {
+		 float: right;
+		 width: auto;
+	}
+	 .product-image img {
+		 margin: 0 0 10px 10px;
+	}
+	 .product-details {
+		 float: none;
+		 margin-bottom: 10px;
+		 width: auto;
+	}
+	 .product-price {
+		 clear: both;
+		 width: 70px;
+	}
+	 .product-quantity {
+		 width: 100px;
+	}
+	 .product-quantity input {
+		 margin-left: 20px;
+	}
+	 .product-quantity:before {
+		 content: "x";
+	}
+	 .product-removal {
+		 width: auto;
+	}
+	 .product-line-price {
+		 float: right;
+		 width: 70px;
+	}
+}
+/* Make more adjustments for phone */
+ @media screen and (max-width: 350px) {
+	 .product-removal {
+		 float: right;
+	}
+	 .product-line-price {
+		 float: right;
+		 clear: left;
+		 width: auto;
+		 margin-top: 10px;
+	}
+	 .product .product-line-price:before {
+		 content: "Item Total: €";
+	}
+	 .totals .totals-item label {
+		 width: 60%;
+	}
+	 .totals .totals-item .totals-value {
+		 width: 40%;
+	}
+}
+ 
+  </style>
+
+
+
+
+</head>
+
+<body>
+
+  
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              Smart Factory
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+              <li class="nav-item">
+                <a class="nav-link" href="virtual-showroom.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"> About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact Us</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="product.html">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="feature.html">Feature</a>
+              </li>
+            </ul>
+            <div class="user_optio_box">
+              <a href="index.html">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </a>
+              <a href="index.html">
+                Logout
+              </a>
+              <a href="">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+
+    <br><br>
+     <!-- service section -->
+
+  <section class="service_section">
+    <div class="container-fluid">
+      <div class="row">
+        
+        
+        <h3>Shopping Cart</h3>
+
+<div class="shopping-cart">
+
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+   <b> <label class="product-price">Price</label></b>
+   <b><label class="product-quantity">Quantity</label></b>
+    <label class="product-removal">Remove</label>
+    <b><label class="product-line-price">Total</label></b>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="images/w1.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Hard Case</div>
+      <p class="product-description">The best quality cases.</p>
+    </div>
+    <div class="product-price">30</div>
+    <div class="product-quantity">
+      <input type="number" value="2" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">60.00</div>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="images/w7.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Flip Case</div>
+      <p class="product-description">Who doesn't like flip cases? We've all good quality flip case product which provide best experinces to the customer. This is a New Arrival Products with new features, and also good quality.</p>
+    </div>
+    <div class="product-price">300</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">300.00</div>
+  </div>
+
+  <div class="totals">
+    <div class="totals-item">
+      <label>Subtotal</label>
+      <div class="totals-value" id="cart-subtotal">360.00</div>
+    </div>
+    <div class="totals-item">
+      <label>Tax (5%)</label>
+      <div class="totals-value" id="cart-tax">2.60</div>
+    </div>
+    <div class="totals-item">
+      <label>Shipping</label>
+      <div class="totals-value" id="cart-shipping">10.00</div>
+    </div>
+    <div class="totals-item totals-item-total">
+      <label>Grand Total</label>
+      <div class="totals-value" id="cart-total">372.60</div>
+    </div>
+  </div>
+
+  <a href="purchase.html" class="checkout">Checkout</a>
+
+</div>
+        
+        
+
+      </div>
+    </div>
+  </section>
+
+  <!-- end service section -->
+   
+  <br><br>
+
+  
+
+
+  <!-- info section -->
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="info_logo">
+        <h2>
+          Smart Factory
+        </h2>
+      </div>
+      <div class="row">
+
+        <div class="col-md-3">
+          <div class="info_contact">
+            <h5>
+              About Shop
+            </h5>
+            <div>
+              <div class="img-box">
+                <img src="images/location-white.png" width="18px" alt="">
+              </div>
+              <p>
+                Address
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="images/telephone-white.png" width="12px" alt="">
+              </div>
+              <p>
+                Phone Number
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="images/envelope-white.png" width="18px" alt="">
+              </div>
+              <p>
+                Email Address
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_info">
+            <h5>
+              Informations
+            </h5>
+            <p>
+              We Provide Best Quality Footwares
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="info_insta">
+            <h5>
+              Product
+            </h5>
+            <div class="insta_container">
+              <div class="row m-0">
+                <div class="col-4 px-0">
+                  <a href="">
+                    <div class="insta-box b-1">
+                      <img src="images/w1.png" alt="">
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4 px-0">
+                  <a href="">
+                    <div class="insta-box b-1">
+                      <img src="images/w2.png" alt="">
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4 px-0">
+                  <a href="">
+                    <div class="insta-box b-1">
+                      <img src="images/w3.png" alt="">
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4 px-0">
+                  <a href="">
+                    <div class="insta-box b-1">
+                      <img src="images/w4.png" alt="">
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4 px-0">
+                  <a href="">
+                    <div class="insta-box b-1">
+                      <img src="images/w5.png" alt="">
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4 px-0">
+                  <a href="">
+                    <div class="insta-box b-1">
+                      <img src="images/w6.png" alt="">
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="info_form ">
+            <h5>
+              Social Media
+            </h5>
+            <!-- <form action="">
+              <input type="email" placeholder="Enter your email">
+              <button>
+                Subscribe
+              </button>
+            </form> -->
+            <div class="social_box">
+              <a href="">
+                <img src="images/fb.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/twitter.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/linkedin.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/youtube.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end info_section -->
+
+  <!-- footer section -->
+  <section class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By Smart Factory
+      </p>
+    </div>
+  </section>
+  <!-- footer section -->
+
+  <!-- jQery -->
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <!-- custom js -->
+  <script type="text/javascript" src="js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+  </script>
+  <!-- End Google Map -->
+
+  <script>
+    /* Set rates + misc */
+var taxRate = 0.05;
+var shippingRate = 15.0;
+var fadeTime = 300;
+
+/* Assign actions */
+$(".product-quantity input").change(function () {
+  updateQuantity(this);
+});
+
+$(".product-removal button").click(function () {
+  removeItem(this);
+});
+
+/* Recalculate cart */
+function recalculateCart() {
+  var subtotal = 0;
+
+  /* Sum up row totals */
+  $(".product").each(function () {
+    subtotal += parseFloat($(this).children(".product-line-price").text());
+  });
+
+  /* Calculate totals */
+  var tax = subtotal * taxRate;
+  var shipping = subtotal > 0 ? shippingRate : 0;
+  var total = subtotal + tax + shipping;
+
+  /* Update totals display */
+  $(".totals-value").fadeOut(fadeTime, function () {
+    $("#cart-subtotal").html(subtotal.toFixed(2));
+    $("#cart-tax").html(tax.toFixed(2));
+    $("#cart-shipping").html(shipping.toFixed(2));
+    $("#cart-total").html(total.toFixed(2));
+    if (total == 0) {
+      $(".checkout").fadeOut(fadeTime);
+    } else {
+      $(".checkout").fadeIn(fadeTime);
+    }
+    $(".totals-value").fadeIn(fadeTime);
+  });
+}
+
+/* Update quantity */
+function updateQuantity(quantityInput) {
+  /* Calculate line price */
+  var productRow = $(quantityInput).parent().parent();
+  var price = parseFloat(productRow.children(".product-price").text());
+  var quantity = $(quantityInput).val();
+  var linePrice = price * quantity;
+
+  /* Update line price display and recalc cart totals */
+  productRow.children(".product-line-price").each(function () {
+    $(this).fadeOut(fadeTime, function () {
+      $(this).text(linePrice.toFixed(2));
+      recalculateCart();
+      $(this).fadeIn(fadeTime);
+    });
+  });
+}
+
+/* Remove item from cart */
+function removeItem(removeButton) {
+  /* Remove row from DOM and recalc cart total */
+  var productRow = $(removeButton).parent().parent();
+  productRow.slideUp(fadeTime, function () {
+    productRow.remove();
+    recalculateCart();
+  });
+}
+
+  </script>
+
+</body>
+
+</html>
